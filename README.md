@@ -29,7 +29,7 @@ This project demonstrates how to control a robotic head using facial emotion rec
 
 ## Software Requirements
 
-1. **Python 3.x**
+1. **Python 3.10** (specific version required)
    - Required libraries:
      - `opencv-python`
      - `fer`
@@ -41,15 +41,49 @@ This project demonstrates how to control a robotic head using facial emotion rec
 
 ## Installation and Setup
 
-### 1. Client Setup
+### Step 1: Clone the Repository
 
-#### Install Python Dependencies
+First, clone the repository to your local machine:
 
 ```bash
-pip install opencv-python fer
+git clone https://github.com/heyangli0304/RobotFace.git
+cd RobotFace
 ```
 
-#### Run the Client Code
+### Windows Setup
+
+#### 1. Install Python 3.10
+
+1. Download Python 3.10 from the [official Python website](https://www.python.org/downloads/release/python-3100/).
+2. During installation, **ensure to check the box "Add Python to PATH"**.
+3. Verify the installation by running the following command in Command Prompt:
+   ```bash
+   python --version
+   ```
+   It should return `Python 3.10.x`.
+
+#### 2. Install Dependencies and Set Up Virtual Environment
+
+1. Open a Command Prompt (Press `Windows + R`, type `cmd`, and hit Enter).
+2. Navigate to your project folder using the `cd` command:
+   ```bash
+   cd path\to\Emotion-Based-Robotic-Head
+   ```
+3. Create a virtual environment named `RobotFace`:
+   ```bash
+   python -m venv RobotFace
+   ```
+4. Activate the virtual environment:
+   ```bash
+   RobotFace\Scripts\activate
+   ```
+   You should now see `(RobotFace)` before the command prompt, indicating the virtual environment is active.
+5. Install the required libraries in the virtual environment:
+   ```bash
+   pip install opencv-python fer
+   ```
+
+#### 3. Run the Client Code
 
 ```bash
 python client_emotion_recognition.py
@@ -57,9 +91,55 @@ python client_emotion_recognition.py
 
 Make sure to replace `server_ip` in the client code with the ESP32's IP address.
 
-### 2. ESP32 Setup
+### Ubuntu Setup
 
-#### Install ESP32 Board Package
+#### 1. Install Python 3.10
+
+1. Open a terminal window.
+2. Install Python 3.10 (if not already installed):
+   ```bash
+   sudo apt update
+   sudo apt install python3.10 python3.10-venv python3.10-dev
+   ```
+3. Verify the installation by running:
+   ```bash
+   python3.10 --version
+   ```
+   It should return `Python 3.10.x`.
+
+#### 2. Install Dependencies and Set Up Virtual Environment
+
+1. Navigate to your project folder:
+   ```bash
+   cd /path/to/RobotFace
+   ```
+2. Create a virtual environment named `RobotFace`:
+   ```bash
+   python3.10 -m venv RobotFace
+   ```
+3. Activate the virtual environment:
+   ```bash
+   source RobotFace/bin/activate
+   ```
+   You should now see `(RobotFace)` before the command prompt, indicating the virtual environment is active.
+4. Install the required libraries in the virtual environment:
+   ```bash
+   pip install opencv-python fer
+   ```
+
+#### 3. Run the Client Code
+
+```bash
+python client_emotion_recognition.py
+```
+
+Make sure to replace `server_ip` in the client code with the ESP32's IP address.
+
+---
+
+### ESP32 Setup
+
+#### 1. Install ESP32 Board Package
 
 1. Open the Arduino IDE.
 2. Go to `File > Preferences`.
@@ -69,10 +149,10 @@ Make sure to replace `server_ip` in the client code with the ESP32's IP address.
    ```
 4. Go to `Tools > Board > Board Manager` and search for "ESP32" to install the board package.
 
-#### Upload the ESP32 Code
+#### 2. Upload the ESP32 Code (Server Code)
 
 1. Connect your ESP32 to the computer.
-2. Open `esp32_robot_head.ino` in the Arduino IDE.
+2. Open `esp32_robot_head.ino` (this is the **server code**) in the Arduino IDE.
 3. Update the Wi-Fi credentials in the code:
    ```cpp
    const char* ssid = "YOUR_WIFI_SSID";
@@ -80,7 +160,7 @@ Make sure to replace `server_ip` in the client code with the ESP32's IP address.
    ```
 4. Upload the code to the ESP32.
 
-#### Connect the Servos
+#### 3. Connect the Servos
 
 Connect each servo to the appropriate pin as defined in the `servoPins` array in the code. Make sure the power supply is adequate to drive all servos.
 
@@ -102,17 +182,17 @@ Connect each servo to the appropriate pin as defined in the `servoPins` array in
 
 ## System Overview
 
-### Client Code
+### Client Code (Python)
 
-The client uses OpenCV and the FER library to:
+The client code, `client_emotion_recognition.py`, uses OpenCV and the FER library to:
 
 1. Capture frames from the webcam.
 2. Detect faces and recognize emotions.
 3. Send emotion and face position data to the ESP32 over a TCP connection.
 
-### ESP32 Code
+### ESP32 Code (Arduino)
 
-The ESP32:
+The ESP32 code, `esp32_robot_head.ino`, serves as the server. It:
 
 1. Receives emotion and face position data from the client.
 2. Maps face position to servo angles for X and Y axes.
@@ -124,10 +204,18 @@ The ESP32:
 ## File Structure
 
 ```
-Emotion-Based-Robotic-Head/
-├── client_emotion_recognition.py   # Python code for emotion recognition
-├── esp32_robot_head.ino           # ESP32 code for robotic head control
-└── README.md                     # Project documentation
+RobotFace/
+├── README.md                     # Project documentation
+├── RobotFace.jpg                  # Demo image (Robot Face)
+├── .gitattributes                 # Git configuration file
+└── src/
+    ├── client/
+    │   └── recognize_emotion.py  # Python client code for emotion recognition
+    └── server_robot_face_esp32/
+        ├── face_control/         
+        │   └── face_control.ino   # ESP32 code for controlling the robotic face
+        ├── test_servo/            # Folder for testing servos (optional)
+        └── libraries/             # Servo libraries (for ESP32)
 ```
 
 ---
