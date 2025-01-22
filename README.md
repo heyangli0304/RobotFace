@@ -186,5 +186,5 @@ This project is licensed under the MIT License. Feel free to use, modify, and di
 
 ## Demo
 
-Include images or videos of the project in action to help others visualize your work!
+![Robot Face](RobotFace.jpg)
 
