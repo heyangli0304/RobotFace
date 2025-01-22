@@ -13,17 +13,27 @@ This project demonstrates how to control a robotic head using facial emotion rec
 
 ---
 
+Here is the updated **Hardware Requirements** section with the added details for the power supply:
+
+---
+
 ## Hardware Requirements
 
-1. **ESP32** microcontroller.
-2. **Servo Motors** (11 total):
+1. **ESP32 Microcontroller**: The central controller for the robotic head, which receives emotion data and controls the servos.
+
+2. **Servo Motors (11 Total)**:
    - Eye movement (X and Y axes)
    - Eyelids
    - Eyebrows (left and right)
    - Mouth (left, right, and opening/closing)
-3. **Power Supply** for ESP32 and servos.
-4. **Camera** (connected to the client machine).
-5. Wi-Fi network.
+
+3. **Power Supply for ESP32 and Servos**:
+   - The power supply should provide a voltage between **6V and 12V** and a current greater than **5A**.
+   - For example, a **7.5V, 5A** power supply can be used to power both the ESP32 and the servos.
+
+4. **Camera**: A camera connected to the client machine to capture video for emotion recognition.
+
+5. **Wi-Fi Network**: The ESP32 requires a stable Wi-Fi connection to communicate with the client machine.
 
 ---
 
