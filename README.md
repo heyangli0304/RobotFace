@@ -137,17 +137,40 @@ Make sure to replace `server_ip` in the client code with the ESP32's IP address.
 
 ---
 
-### ESP32 Setup
+Here is the updated **ESP32 Setup** section, now including the mention of the **face models** available in the **Release** folder:
 
-#### 1. Install ESP32 Board Package
+---
 
-1. Open the Arduino IDE.
-2. Go to `File > Preferences`.
-3. Add the following URL to the "Additional Board Manager URLs" field:
-   ```
-   https://dl.espressif.com/dl/package_esp32_index.json
-   ```
-4. Go to `Tools > Board > Board Manager` and search for "ESP32" to install the board package.
+## ESP32 Setup
+
+### 1. Install Arduino IDE and ESP32 Board Package
+
+1. **Download Arduino IDE**:
+   - Go to the **Release** folder in your project directory.
+   - Download and run `Arduino IDE.exe` to install the Arduino IDE on your computer.
+
+2. **Install ESP32 Board Package**:
+   - In the **Release** folder, download and run `32_package_1.0.6_arduino.cn.exe`. This will install the necessary ESP32 board package for the Arduino IDE.
+
+3. **Open Arduino IDE**:
+   - Once the installation is complete, open the Arduino IDE. You should now have the ESP32 boards available for selection.
+
+4. **Select the ESP32 Board**:
+   - Go to `Tools > Board > ESP32 Dev Module` (or any other appropriate ESP32 board).
+   - Ensure the selected board matches the one you're using.
+
+### 2. Face Models and Servo Setup
+
+1. **Download Face Models**:
+   - In the **Release** folder, you will find the **FaceModel.zip** file, which contains the 3D models and necessary parts for the robot's face. Extract the contents to a folder on your computer.
+
+2. **Connect Servos**:
+   - The face models in **FaceModel.zip** include parts like the skin, mouth, and eyes, which are connected to servos using wires or mechanical links. Make sure the servos are connected according to the instructions provided in the `face_control.ino` code.
+
+3. **Test the Face Movements**:
+   - After connecting the servos and the face parts, you can run the `test_servo` code in the **server_robot_face_esp32** folder to test the movement of the servos and ensure everything is functioning correctly.
+
+---
 
 #### 2. Upload the ESP32 Code (Server Code)
 
