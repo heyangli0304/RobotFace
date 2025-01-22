@@ -3,7 +3,25 @@
 This project demonstrates how to control a robotic head using facial emotion recognition. The system uses a client-server architecture where the client detects human emotions via a camera and sends the information to an ESP32-based robotic head, which then reacts by moving servos to express corresponding emotions.
 
 ---
+## Result
 
+### Sample Facial Expressions
+
+Here are a few examples of the robotic head expressions for different emotions:
+
+- **Neutral Expression**  
+  ![Neutral](neutral.jpg)
+
+- **Happy Expression**  
+  ![Happy](happy.jpg)
+
+- **Surprise Expression**  
+  ![Surprise](surprise.jpg)
+
+- **Angry Expression**
+  ![Angry](angry.jpg)
+
+---
 ## Features
 
 - **Real-Time Emotion Recognition**: Recognizes emotions like neutral, happy, sad, angry, and surprise using a webcam.
